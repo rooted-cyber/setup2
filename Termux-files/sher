@@ -1,0 +1,15 @@
+#!/bin/bash
+ahb() {
+printf "\n Not support pip3\n"
+exit
+}
+inp() {
+msg installing sherlock
+command -v rm || ra
+command -v pip3 || apt install python3-pip -y
+command -v pip3 || ahb
+command -v sherlock || pip3 install sherlock-project 
+command -v sherlock || msg successfully installed
+}
+command -v sherlock || inp
+sherlock $1

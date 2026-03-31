@@ -1,0 +1,107 @@
+ban() {
+clear
+echo -e "\033[1;91m
+╔══════════════════════════════╗
+║   ⚡ ZSH THEME INSTALLER ⚡   ║
+╠══════════════════════════════╣
+║  ➤ Powerlevel10k Setup       ║
+║  ➤ Oh-My-Zsh Install         ║
+║  ➤ Plugins Auto Install      ║
+╚══════════════════════════════╝
+\033[1;92m        >> Ready To Hack <<\033[0m"
+}
+ab() {
+cd ~
+if [ -e .Rootedcyber ];then
+msg already installed theme
+msg
+exit
+fi
+}
+ptt() {
+ab
+msg cloning powerlevel10k
+git clone https://github.com/romkatv/powerlevel10k
+mkdir .Rootedcyber
+cd .Rootedcyber
+msg cloning zsh-autosuggestions
+msg
+git clone https://github.com/zsh-users/zsh-autosuggestions
+msg cloning zsh-syntax-highlighting
+msg
+git clone https://github.com/zsh-users/zsh-syntax-highlighting
+#cp -rf * ~
+msg cloning oh-my-zsh
+msg
+git clone https://github.com/ohmyzsh/ohmyzsh ~/.oh-my-zsh
+cd ~
+msg clonning zsh files + add theme
+msg
+git clone https://github.com/rooted-cyber/zsh
+msg Installing zsh
+apt install zsh -y
+cd zsh
+cp -rf .zshrc shor* .p10k.zsh .term* ~
+chsh -s zsh
+}
+ins() {
+ab
+mkdir .Rootedcyber
+cd .Rootedcyber
+msg cloning zsh-autosuggestions
+msg
+git clone https://github.com/zsh-users/zsh-autosuggestions
+msg cloning zsh-syntax-highlighting
+msg
+git clone https://github.com/zsh-users/zsh-syntax-highlighting
+#cp -rf * ~
+msg cloning oh-my-zsh
+msg
+git clone https://github.com/ohmyzsh/ohmyzsh ~/.oh-my-zsh
+cd ~
+msg clonning zsh files + add theme
+msg
+git clone https://github.com/rooted-cyber/zsh
+msg Installing zsh
+apt install zsh -y
+cd zsh
+cp -rf . shor* ab .term* ~
+wget -O ~/.zshrc https://raw.githubusercontent.com/rooted-cyber/zsh/refs/heads/main/.zshrc2
+chsh -s zsh
+}
+nth() {
+msg -n "install zsh theme (y|n) "
+read t
+case $t in
+y|Y)ins ;;
+n|N)exit ;;
+esac
+}
+pth() {
+msg -n "install powerlevel10k zsh theme (y|n) "
+read p
+case $p in
+y|Y)ptt ;;
+n|N)exit ;;
+esac
+}
+menu() {
+ban
+printf "\n\033[1;91m [\033[0m 1\033[1;91m ]\033[1;92m Zsh theme"
+printf "\n\033[1;91m [\033[0m 2\033[1;91m ]\033[1;92m Powerlevel10k zsh theme"
+msg -n "\n\nChoose option: \033[1;0m"
+read a
+case $a in
+1)nth ;;
+2)pth ;;
+esac
+}
+if command -v msg;then
+menu
+else
+msg -n "Setup (y) "
+read l
+case $l in
+y|Y)bash -c "$(curl -fsSl https://gist.githubusercontent.com/rooted-cyber/ce6248bd681844d35a12bd210989eb89/raw/install)" ;;
+esac
+fi

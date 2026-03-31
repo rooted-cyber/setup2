@@ -1,0 +1,4 @@
+#!/data/data/com.termux/files/usr/bin/bash
+a=$1
+random
+toilet -f font $1

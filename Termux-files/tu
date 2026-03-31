@@ -1,0 +1,205 @@
+#!/bin/bash
+msg() {
+random
+echo -e "$@" >&2
+}
+upk() {
+printf "\033[1;93m  [\033[1;92m updated 8 march 2026\033[1;93m ]\n\n\n"
+}
+upd() {
+wget -qO up https://gist.githubusercontent.com/rooted-cyber/7c25208607b0d7d2309193cbd1c85603/raw/up
+
+if grep -q "1.0" up; then
+    msg "\t \t updated"
+else
+    msg "update need"
+    exit
+fi
+}
+if [ $# -eq 0 ];then
+upd
+upk
+msg -n usage: tu [opttion]....
+msg 
+msg -n Options
+msg
+msg -n p - adb pair
+msg -n c - adb connect
+msg -n -i or ins - install all thing
+msg -n -c or cpp - copy files or plugins
+msg -n -e or env - create env
+msg -n -s or ses - generate session
+msg -n -t or theme - install theme
+msg -n st - start ultroit
+msg -n up - update tu
+msg -n tp -- token.pickle install
+msg -n ip - get ip
+msg -n  sp - install speedtest as sp
+msg -n  py - copy pyUltroid
+msg -n  wps - install whatsapp bot
+msg -n  rq - installing req.
+msg -n  wcp - copy plugins,env and img
+msg -n  ph - phone info
+msg
+exit
+fi
+rq() {
+if [ -e Astra-Userbot ];then
+cd ~/Astra-Userbot
+pip3 install -r requirements.txt --no-cache-dir --force-reinstall
+fi
+}
+short() {
+msg adding shortcut command wp
+cat >> wp << EOF
+cd ~/Astra-Userbot
+msg staring whatsap bot
+python3 bot.py
+EOF
+}
+wps() {
+if command -v wp;then
+msg added wp command
+else
+short
+fi
+cd ~
+if [ -e Astra-Userbot ];then
+cd Astra-Userbot
+msg staring whatsap bot
+python3 bot.py
+else
+msg installig whatsap bot
+curl -fsSL https://raw.githubusercontent.com/paman7647/Astra-Userbot/master/install.sh -o install.sh
+bash install.sh
+chmod +x setup.sh
+./setup.sh
+pip3 install -r requirements.txt --no-cache-dir --force-reinstall
+fi
+}
+msgail() {
+msg installing adb
+apt install android-tools -y
+pkg install android-tools -y
+msg installed
+}
+pb() {
+cd /bin
+cd $PREFIX/bin
+}
+shoor() {
+if [ -e /bin ];then
+msg Found Termux-ubuntu
+rm /bin/sm
+cp -rf /sdcard/ult* ~/T*d/U*
+cp /sdcard/.env ~
+cp /sdcard/sm /bin
+chmod 777 /bin/sm
+else
+msg Found Termux
+rm $PREFIIX/bin/sm
+cp -rf /sdcard/ult* ~/T*d/U*
+cp /sdcard/.env ~
+cp /sdcard/sm $PREFIX/bin
+chmod 777 $PREFIX/bin/sm
+fi
+}
+fold() {
+cd ~
+mkdir Termux-Ultroid
+cd Termux-Ultroid
+}
+fol() {
+fold > /dev/null 2>&1
+if [ -e Ultroid ];then
+cd ~/Termux-Ultroid/Ultroid
+else
+git clone https://github.com/TeamUltroid/Ultroid
+cd Ultroid
+fi
+}
+termux() {
+fol
+pip3 install -r req*
+pip3 install -r requirements.txt --force-reinstall
+for c in pillow coloredlogs gitpython bs4 pytz enhancer telegraph aiohttp requests;do
+msg installing 
+printf "$c\n"
+if command -v pip3;then
+pip3 install $c
+else
+pp i $c
+fi
+done
+shoor
+}
+ins() {
+msg installing ultroid
+termux
+}
+star() {
+fol
+if [ -e startup ];then
+bash startup
+else
+msg First install ultroid !!
+echo
+echo
+exit 1
+fi
+}
+dl() {
+cd /sdcard
+wget -q -O term.deb https://github.com/rooted-cyber/setup/raw/main/all-termux.deb
+}
+if [ "$1" == "ins" ] || [ ""$1"" == "-i" ];then
+ins
+elif [ "$1" == "wpc" ];then
+bash -c "$(curl -fsSL https://gist.githubusercontent.com/rooted-cyber/509190613bafda0a30539e3e10932877/raw/cpp)"
+elif [ "$1" == "wps" ];then
+wps
+elif [ "$1" == "rq" ];then
+rq
+elif [ "$1" == "ph" ];then
+sh -c "$(curl -fsSl https://gist.githubusercontent.com/rooted-cyber/cdb6533f500f53dd46404968794bec9a/raw/phone.sh)"
+elif  [ "$1" == "cpp" ] || [ ""$1"" == "-c" ];then
+bash -c "$(curl -fsSl https://gist.githubusercontent.com/rooted-cyber/1bd2b7d3eb4d66ab06ab5e83098395e3/raw/cpp)"
+elif [ "$1" == "env" ] || [ ""$1"" == "-e" ];then
+fol
+python3 -c "$(curl -fsSl https://gist.githubusercontent.com/rooted-cyber/02bcbcec333d5698dfb696156f8bdc09/raw/env)"
+elif [ "$1" == "ses" ] || [ ""$1"" == "-s" ];then
+python3  -c "$(curl -fsSl https://gist.githubusercontent.com/rooted-cyber/832b915e64246556827da92176b41a4b/raw/pyro)"
+elif [ "$1" == "os" ];then
+bash -c "$(curl -fsSl https://gist.githubusercontent.com/rooted-cyber/ce6248bd681844d35a12bd210989eb89/raw/install)"
+elif [ "$1" == "st" ];then
+star
+elif [ "$1" == "dl" ];then
+dl
+elif [ "$1" == "ip" ] || [ ""$1"" == "-i" ];then
+curl https://ipinfo.io
+elif [ "$1" == "tp" ];then
+cd $PREFIX/bin
+wget -q -O tp https://gist.githubusercontent.com/rooted-cyber/7f58c513065aa7b656cbabbb7961fffd/raw/tp
+chmod 777 tp
+msg installed tp
+elif [ ""$1"" == "-t" ] || [ ""$1"" == "theme" ];then
+msg installing theme
+curl -L https://gist.githubusercontent.com/rooted-cyber/420b123198d12ebc012b17a29d2a80ee/raw/theme | bash
+elif [ "$1" == "sp" ];then
+bash -c "$(curl -fsSl https://gist.githubusercontent.com/rooted-cyber/6f47f4d7b3455dbe10556008515e0c9f/raw/speed)"
+elif [ "$1" == "p" ];then
+command -v adb || ail
+adb pair 192.168.31.$2:$3
+elif [ "$1" == "c" ];then
+command -v adb || ail
+adb connect 192.168.31.$2:$3
+elif [ "$1" == "py" ];then
+bash -c "$(curl -fsSl https://gist.githubusercontent.com/rooted-cyber/edc0ac4c7da73e933ad954f90c40447e/raw/py)"
+elif [ "$1" == "up" ];then
+printf "\n\n\033[1;92m updating"
+pb > /dev/null 2>&1
+wget -q -O tu https://gist.githubusercontent.com/rooted-cyber/05ca0b015cdbdb3ac87bb9cdaed3da75/raw/7a0069caac9b6779fbb8bcf87f736dfd72a50ac7/tu
+upk
+else
+msg invalid selection
+fi

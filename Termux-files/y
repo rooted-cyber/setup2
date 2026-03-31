@@ -1,0 +1,19 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+bn() {
+msg now installing
+pip3 install -U yt-dlp
+pp i -U yt-dlp
+apt install ffmpeg -y
+msg complete
+}
+cn() {
+command -v yt-dlp >/dev/null 2>&1 || bn
+}
+cn
+mkdir /sdcard/yt > /dev/null 2>&1
+cd /sdcard/yt
+msg now downloading
+msg
+msg
+yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]" --merge-output-format mp4 -o "%(title)s.%(ext)s" $1 $2

@@ -1,0 +1,16 @@
+clear
+msg "══════════ ⚡ COMMAND LIST ⚡ ══════════"
+
+msg "1)  msg    ➤ write colorful"
+msg "2)  tof    ➤ logo with colorful"
+msg "3)  ex     ➤ create & extract .deb (deb folder)"
+msg "4)  cutt   ➤ cut video (cut folder)"
+msg "5)  pp     ➤ use pip without install pip"
+msg "6)  tu     ➤ script"
+msg "7)  y      ➤ download yt videos"
+msg "8)  ytt    ➤ more info: ytt --help"
+msg "9)  theme  ➤ get zsh theme"
+msg "10) ub     ➤ install & open proot ubuntu"
+msg "11) ubs    ➤ install & open Termux ubuntu"
+msg "12) sher   ➤ sherlock usages"
+msg "══════════════════════════════════════"

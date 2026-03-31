@@ -1,0 +1,27 @@
+#!/data/data/com.termux/files/usr/bin/python
+from random import choice as c
+from sys import exit as ep
+from os import system as s,listdir as ls, chdir as cd
+try:
+  from colorama import Fore as f
+except:
+  s("pp i colorama && pip3 install colorama")
+  from colorama import Fore as f
+
+p = print
+col = f.LIGHTRED_EX,f.LIGHTGREEN_EX,f.LIGHTYELLOW_EX,f.LIGHTBLUE_EX,f.LIGHTCYAN_EX,f.LIGHTMAGENTA_EX
+rc = f"{c(col)}"
+r = f.WHITE
+# = f"{rc}password :{r} Mahphujalam"
+b = f"""
+{c(col)}public-file = {r}/home/frs/project/rnx1941
+
+{c(col)}private-file = {r}/home/users/r/ro/rootedcyber
+"""
+p("{}".format(f"{b}"))
+c = "sftp rootedcyber@frs.sourceforge.net"
+with open("a.sh","w") as a:
+  a.write(c)
+
+
+s("bash a.sh")

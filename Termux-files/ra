@@ -1,0 +1,34 @@
+
+msg() {
+printf "$1 $2 $3"
+}
+ter() {
+cd $PREFIX/bin
+if [ -e rm ];then
+msg removing rm
+mv rm aa
+else
+msg adding rm
+mv aa rm
+fi
+}
+os() {
+cd /bin
+if [ -e rm ];then
+msg removing rm
+mv rm am
+else
+msg adding rm
+mv am rm
+fi
+}
+ins() {
+cd /bin
+if [ -e apt ];then
+echo
+os
+else
+ter
+fi
+}
+ins

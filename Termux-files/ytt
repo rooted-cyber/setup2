@@ -1,0 +1,72 @@
+#!/data/data/com.termux/files/usr/bin/bash
+if [ $# -eq 0 ]; then
+    echo "No arguments provided."
+    echo "Run with ytt --help to view all available options."
+    exit 1
+fi
+mgg() {
+msg First install megadl
+printf "\033[0m apt install megatools\n\n"
+}
+if [ $1 == "v" ];then
+cd /sdcard
+yt-dlp -o "%(series)s/S0%(season_number)s - E%(episode_number)s - %(title)s.%(ext)s" $2
+elif [ $1 == "c" ];then
+echo
+echo
+printf "Your link : \033[0m$2"
+printf "\n\033[1;91m Choose quality
+
+\033[1;95m 1)480p\t\t\t\033[1;93m 2)720p
+"
+echo -e -n "\nchoose : "
+read c
+case $c in
+1)ytt 480p $2 ;;
+2)ytt 720p $2 ;;
+*)ytt c $2 ;;
+esac
+
+elif [ $1 == "a" ];then
+yt-dlp -o "/sdcard/yt/%(title)s.%(ext)s" -x $2
+elif [ $1 == "id" ];then
+yt-dlp -o "/sdcard/yt/%(title)s.%(ext)s" https://youtu.be/$2
+elif [ $1 == "up" ];then
+cd $PREFIX/bin
+msg updating
+wget -q -O ytt https://gist.githubusercontent.com/rooted-cyber/f4b28dacde6bc3bac07f1f29a3c394a7/raw/ytt
+msg updated now 7 oct 24
+ytt --help
+elif [ $1 == "install" ] || [ "$1" == -i ];then
+command -v rm || ra
+apt install nodejs ffmpeg megatools megatools -y
+pip3 install -U yt-dlp
+pp i -U yt-dlp
+elif [ $1 == "480p" ];then
+cd /sdcard
+yt-dlp -S "+res:480,codec,br" -o "%(series)s/S0%(season_number)s - E%(episode_number)s - %(title)s.%(ext)s" $2
+elif [ $1 == "720p" ];then
+cd /sdcard
+yt-dlp -S "res:720,fps" -o "%(series)s/S0%(season_number)s - E%(episode_number)s - %(title)s.%(ext)s" $2
+elif [ $1 == "mega" ] || [ "$1" == "-m" ];then
+command -V megadl || mgg
+mkdir /sdcard/Mega > /dev/null 2>&1 
+cd /sdcard/Mega
+megadl $2
+elif [ $1 == "--help" ];then
+printf "\n ytt [commands] [anylink]
+Usage : ytt v [anylink]
+commands :
+v -- download video
+a -- download audio
+id -- video/audio of youtube id 
+mega or -m -- download mega files
+install or -i -- install missing package
+480p -- 480p quality download
+720p -- 720p quality download
+c -- choose quality
+up -- update ytt
+\n\n"
+else
+printf "\n\n\033[1;91m invalid selection\n\n"
+fi

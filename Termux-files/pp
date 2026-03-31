@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+mdg() {
+cd ~/bin
+}
+if [ $# -eq 0 ]; then
+    msg pp i - install pip package
+    msg pp u - uninstall pip package
+    msg pp s - show pip package
+    msg pp f - list of pip package
+    msg pp up - update pip
+    exit 1
+fi
+if [ $1 == "i" ];then
+mdg
+bash py.sh install "$@" >&2
+elif [ $1 == "u" ];then
+mdg
+bash py.sh uninstall "$@" >&2 -y
+elif [ $1 == "s" ];then
+mdg
+bash py.sh show $2
+elif [ $1 == "f" ];then
+mdg
+bash py.sh freez
+elif [ "$1" == "up" ];then
+msg updating your pip
+command -v rm || ra
+rm -rf bin*
+wget https://github.com/rooted-cyber/pip/raw/refs/heads/main/bin.zip
+unzip bin.zip
+elif [ "$1" ]; then
+mdg
+bash py.sh "$@"
+fi

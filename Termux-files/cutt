@@ -1,0 +1,13 @@
+cd /sdcard/cut
+if [ -e *mp4 ];then
+msg now cutting video....
+ci() {
+command -v rm || ra
+apt install ffmpeg -y
+}
+command -v ffmpeg || ci
+ffmpeg -ss $1 -to $2 -i *mp4 -c copy cut.mp4 > /dev/null 2>&1
+msg successfully cutted video
+else
+msg Not found videos
+fi

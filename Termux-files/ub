@@ -1,0 +1,12 @@
+if [ -d "/data/data/com.termux/files/usr/var/lib/proot-distro/installed-rootfs/ubuntu" ]; then
+printf "\t\t✅ Ubuntu installed"
+msg opening ubuntu
+proot-distro login ubuntu
+else
+echo "❌ Ubuntu not installed"
+msg installing ubuntu
+pkg update && pkg upgrade -y
+pkg install proot-distro -y
+proot-distro install ubuntu
+msg installed
+fi
