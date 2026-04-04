@@ -4,15 +4,16 @@ random
 echo -e "$@" >&2
 }
 upk() {
-printf "\033[1;93m  [\033[1;92m updated 8 march 2026\033[1;93m ]\n\n\n"
+printf "\033[1;93m  [\033[1;92m updated 1 April 2026\033[1;93m ]\n\n\n"
 }
 upd() {
 wget -qO up https://gist.githubusercontent.com/rooted-cyber/7c25208607b0d7d2309193cbd1c85603/raw/up
 
-if grep -q "1.0" up; then
-    msg "\t \t updated"
+if grep -q "4.0" up; then
+upk
 else
     msg "update need"
+    msg type tu up
     exit
 fi
 }
@@ -43,9 +44,32 @@ msg -n  ph - phone info
 msg
 exit
 fi
+imn() {
+apt install -y \
+libnspr4 \
+libnss3 \
+libatk1.0-0t64 \
+libatk-bridge2.0-0t64 \
+libcups2t64 \
+libxcb1 \
+libxkbcommon0 \
+libatspi2.0-0t64 \
+libx11-6 \
+libxcomposite1 \
+libxdamage1 \
+libxext6 \
+libxfixes3 \
+libxrandr2 \
+libgbm1 \
+libcairo2 \
+libpango-1.0-0 \
+libasound2t64
+}
 rq() {
 if [ -e Astra-Userbot ];then
 cd ~/Astra-Userbot
+pip3 install -r requirements.txt --no-cache-dir --force-reinstall
+else
 pip3 install -r requirements.txt --no-cache-dir --force-reinstall
 fi
 }
@@ -56,6 +80,8 @@ cd ~/Astra-Userbot
 msg staring whatsap bot
 python3 bot.py
 EOF
+cp wp /bin
+chmod 777 /bin/wp
 }
 wps() {
 if command -v wp;then
@@ -63,19 +89,15 @@ msg added wp command
 else
 short
 fi
-cd ~
-if [ -e Astra-Userbot ];then
-cd Astra-Userbot
-msg staring whatsap bot
-python3 bot.py
-else
 msg installig whatsap bot
-curl -fsSL https://raw.githubusercontent.com/paman7647/Astra-Userbot/master/install.sh -o install.sh
+git clone https://github.com/paman7647/Astra-Userbot
+cd Ast*
+ch playwright
 bash install.sh
 chmod +x setup.sh
 ./setup.sh
 pip3 install -r requirements.txt --no-cache-dir --force-reinstall
-fi
+imn
 }
 msgail() {
 msg installing adb
@@ -83,9 +105,21 @@ apt install android-tools -y
 pkg install android-tools -y
 msg installed
 }
+upp() {
+msg downloading update,
+msg
+wget -O tu https://gist.githubusercontent.com/rooted-cyber/05ca0b015cdbdb3ac87bb9cdaed3da75/raw/tu
+chmod 777 tu
+upk
+}
 pb() {
-cd /bin
+if [ -n "$PREFIX" ]; then
 cd $PREFIX/bin
+upp
+else
+cd /bin
+upp
+fi
 }
 shoor() {
 if [ -e /bin ];then
@@ -196,10 +230,7 @@ adb connect 192.168.31.$2:$3
 elif [ "$1" == "py" ];then
 bash -c "$(curl -fsSl https://gist.githubusercontent.com/rooted-cyber/edc0ac4c7da73e933ad954f90c40447e/raw/py)"
 elif [ "$1" == "up" ];then
-printf "\n\n\033[1;92m updating"
-pb > /dev/null 2>&1
-wget -q -O tu https://gist.githubusercontent.com/rooted-cyber/05ca0b015cdbdb3ac87bb9cdaed3da75/raw/7a0069caac9b6779fbb8bcf87f736dfd72a50ac7/tu
-upk
+pb
 else
 msg invalid selection
 fi
