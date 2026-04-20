@@ -4,16 +4,16 @@ random
 echo -e "$@" >&2
 }
 upk() {
-printf "\033[1;93m  [\033[1;92m updated 1 April 2026\033[1;93m ]\n\n\n"
+printf "\033[1;93m  [\033[1;92m updated 20 April 2026\033[1;93m ]\n\n\n"
 }
 upd() {
 wget -qO up https://gist.githubusercontent.com/rooted-cyber/7c25208607b0d7d2309193cbd1c85603/raw/up
 
-if grep -q "4.0" up; then
+if grep -q "5.0" up; then
 upk
 else
     msg "update need"
-    msg type tu up
+    msg "type tu up"
     exit
 fi
 }
@@ -83,14 +83,7 @@ EOF
 cp wp /bin
 chmod 777 /bin/wp
 }
-wps() {
-if command -v wp;then
-msg added wp command
-else
-short
-fi
-msg installig whatsap bot
-git clone https://github.com/paman7647/Astra-Userbot
+wi() {
 cd Ast*
 ch playwright
 bash install.sh
@@ -99,7 +92,24 @@ chmod +x setup.sh
 pip3 install -r requirements.txt --no-cache-dir --force-reinstall
 imn
 }
-msgail() {
+wps() {
+if command -v wp;then
+msg added wp command
+else
+short
+fi
+msg installig whatsap bot
+if [ -d ~/Astra-Usrbot ];then
+msg already cloned
+msg
+msg now installing
+wi
+else
+git clone https://github.com/paman7647/Astra-Userbot
+wi
+fi
+}
+ail() {
 msg installing adb
 apt install android-tools -y
 pkg install android-tools -y
@@ -122,20 +132,20 @@ upp
 fi
 }
 shoor() {
-if [ -e /bin ];then
-msg Found Termux-ubuntu
-rm /bin/sm
-cp -rf /sdcard/ult* ~/T*d/U*
-cp /sdcard/.env ~
-cp /sdcard/sm /bin
-chmod 777 /bin/sm
-else
+if [ -n $PREFIX ];then
 msg Found Termux
 rm $PREFIIX/bin/sm
 cp -rf /sdcard/ult* ~/T*d/U*
 cp /sdcard/.env ~
 cp /sdcard/sm $PREFIX/bin
 chmod 777 $PREFIX/bin/sm
+else
+msg Found Termux-ubuntu
+rm /bin/sm
+cp -rf /sdcard/ult* ~/T*d/U*
+cp /sdcard/.env ~
+cp /sdcard/sm /bin
+chmod 777 /bin/sm
 fi
 }
 fold() {
@@ -154,11 +164,13 @@ fi
 }
 termux() {
 fol
-pip3 install -r req*
-pip3 install -r requirements.txt --force-reinstall
+if command -v pip3;then
+pip3 install -r requirements.txt  --no-cache-dir --force-reinstall
+else
+pp i -r ~/T*d/*/req*  --no-cache-dir --force-reinstall
+fi
 for c in pillow coloredlogs gitpython bs4 pytz enhancer telegraph aiohttp requests;do
-msg installing 
-printf "$c\n"
+msg "installing $c"
 if command -v pip3;then
 pip3 install $c
 else

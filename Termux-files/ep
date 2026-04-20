@@ -1,0 +1,2 @@
+tu c 24:$1
+adb shell am force-stop com.termux
