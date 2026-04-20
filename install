@@ -55,6 +55,7 @@ msg Termux found
 cd ~/.abc
 msg installing
 msg
+cp .termux* ~/termux
 dpkg -i Termux.deb
 else
 msg ubuntu found
@@ -90,14 +91,14 @@ msg
 apt update -y && apt upgrade -y
 apt install --fix-broken -y
 clear
-for b in proot git wget figlet toilet python3 sudo;do
+for b in curl nano proot git wget figlet toilet python3 sudo;do
 if command -v $b > /dev/null 2>&1;then
 msg "already installed $b"
 else
 msg "installing \033[1;93m $b"
 sleep 1
 echo
-apt install python-pip -y
+apt install python-pip python3.12-venv -y
 apt install $b -y || msg not found
 fi
 done
@@ -111,3 +112,4 @@ msg run this ➤ termux-setup-storage
 a
 sleep 1
 h
+msg run this ➤ termux-setup-storage
