@@ -1,0 +1,16 @@
+Package: rootedcyber
+Version: 17.0
+Architecture: all
+Maintainer: Maruf
+Installed-Size: 1
+Depends: figlet, toilet
+Filename: ./rootedcyber.deb
+Size: 7484
+MD5sum: 6cfb8f327cfb9659572727846168b397
+SHA1: 117ea50a138a0f62ba5910cfbeb1d7878a3ff3c9
+SHA256: 6b54ef007ce4f4b46593228e004c96b56904ecb1ba82d9730fe1c6a874dc2f14
+Homepage: https://github.com/rooted-cyber
+Description: You can use many commands
+My_phone_number: +918210268264
+My_tg_username: @rootedcyber
+
