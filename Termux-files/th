@@ -1,0 +1,41 @@
+th() {
+if [ -d ~/Rootedcyber ];then
+msg alread cloned + installed
+else
+cd ~
+mkdir .Rootedcyber
+cd ~/.Rootedcyber
+msg cloning zsh-autosuggestions
+msg
+git clone https://github.com/zsh-users/zsh-autosuggestions > /dev/null 2>&1
+msg cloning zsh-syntax-highlighting
+msg
+git clone https://github.com/zsh-users/zsh-syntax-highlighting > /dev/null 2>&1
+#cp -rf * ~
+msg cloning oh-my-zsh
+msg
+git clone https://github.com/ohmyzsh/ohmyzsh ~/.oh-my-zsh > /dev/null 2>&1
+apt install zsh wget -y -qq
+cd ~
+wget -q https://raw.githubusercontent.com/rooted-cyber/Zsh-Random-Theme/refs/heads/main/so
+wget -q https://raw.githubusercontent.com/rooted-cyber/Zsh-Random-Theme/refs/heads/main/.zshrc
+chsh -s zsh
+msg compled
+fi
+}
+ban() {
+    clear
+    msg
+    msg "╭────────────────────────╮"
+    msg "│    ROOTEDCYBER • ZSH   │"
+    msg "│    Random Theme Setup  │"
+    msg "╰────────────────────────╯"
+    msg
+}
+menu() {
+ban
+msg -n "Install Zsh-Random-Theme  "
+read
+th
+}
+menu
