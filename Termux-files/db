@@ -1,0 +1,8 @@
+msg Trying  opening ubuntu
+proot-distro login debian || msg not installed
+
+msg installing debian
+pkg update && pkg upgrade -y
+pkg install proot-distro -y
+proot-distro install debian
+msg installed
